@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "taketwobetamobs",
+  "version": "${version}",
+
+  "name": "TakeTwoBetaMobs",
+  "description": "Attempts to add variants for each beta mob. Mob variants only spawn in a chunk that has their corresponding structure.",
+  "authors": [
+    "Telvarost"
+  ],
+  "contact": {
+    "issues": "https://github.com/telvarost/TakeTwoBetaMobs-StationAPI/issues",
+    "homepage": "https://github.com/telvarost/TakeTwoBetaMobs-StationAPI/",
+    "sources": "https://github.com/telvarost/TakeTwoBetaMobs-StationAPI/"
+  },
+
+  "license": "MIT",
+  "icon": "assets/taketwobetamobs/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "stationapi:event_bus": [
+      "com.github.telvarost.taketwobetamobs.TakeTwoBetaMobs",
+      "com.github.telvarost.taketwobetamobs.events.init.EntityListener",
+      "com.github.telvarost.taketwobetamobs.events.init.EntitySpawnListener",
+      "com.github.telvarost.taketwobetamobs.events.init.ItemListener",
+      "com.github.telvarost.taketwobetamobs.events.init.RecipeListener"
+    ],
+    "stationapi:event_bus_client": [
+      "com.github.telvarost.taketwobetamobs.events.client.EntityRendererListener"
+    ],
+    "stationapi:event_bus_server": [
+    ],
+    "bhcreative:event_bus": [
+      "com.github.telvarost.taketwobetamobs.events.init.CreativeListener"
+    ],
+    "gcapi3": [
+      "com.github.telvarost.taketwobetamobs.Config"
+    ]
+  },
+  "mixins": [
+    "taketwobetamobs.mixins.json"
+  ],
+  "accessWidener": "taketwobetamobs.accesswidener",
+
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3",
+    "stationapi": "*",
+    "zastavkaapi": ">=1.1.0"
+  },
+
+  "recommends": {
+    "gcapi3": ">=3.0.1",
+    "modmenu": "*"
+  }
+}
