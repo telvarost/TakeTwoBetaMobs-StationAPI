@@ -138,8 +138,8 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 		return (  this.world.difficulty > 0
 			   && (blockId == Block.GRASS_BLOCK.id || blockId == Block.NETHERRACK.id)
 			   && this.world.getBrightness(xCoord, yCoord, zCoord) <= 8
-			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.spawnRegionShadowWolf
-			      || entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf()
+			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+			      //|| entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf()
 		          )
 			   && this.world.getEntityCollisions(this, this.boundingBox).isEmpty()
 			   && !this.world.isBoxSubmergedInFluid(this.boundingBox)

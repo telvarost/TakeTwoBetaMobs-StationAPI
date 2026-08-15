@@ -16,6 +16,12 @@ public class Config {
         )
         public RecipeConfig RECIPE_CONFIG = new RecipeConfig();
 
+        @ConfigCategory(
+                name = "Spawn Rules Config",
+                description = "Restart required for changes to take effect"
+        )
+        public SpawnRulesConfig SPAWN_RULES_CONFIG = new SpawnRulesConfig();
+
 //        @ConfigEntry(
 //                name = "Chance On Break Soul Sand Spawns Lost Soul",
 //                description = "Float value between 0.0 (0%) and 1.0 (100%)",
@@ -23,13 +29,6 @@ public class Config {
 //                maxLength = 1
 //        )
 //        public Float chanceBreakingSoulSandSpawnsShadowWolf = 0.01F;
-
-        @ConfigEntry(
-                name = "Shadow Wolf Spawn Region",
-                description = "Restart required for changes to take effect",
-                multiplayerSynced = true
-        )
-        public SpawnRegionEnum spawnRegionShadowWolf = SpawnRegionEnum.CHUNK_SPECIFIC;
     }
 
     public static class RecipeConfig {
@@ -40,5 +39,15 @@ public class Config {
                 multiplayerSynced = true
         )
         public Boolean enableLocatorCraftingRecipe = true;
+    }
+
+    public static class SpawnRulesConfig {
+
+        @ConfigEntry(
+                name = "Shadow Wolf Spawn Region",
+                description = "Chunk specific option requires RetroAPI",
+                multiplayerSynced = true
+        )
+        public SpawnRegionEnum spawnRegionShadowWolf = SpawnRegionEnum.BIOME_SPECIFIC;
     }
 }

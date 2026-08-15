@@ -26,34 +26,34 @@ public class EntitySpawnListener {
             || event.biome == Biome.ICE_DESERT
         ) {
             // Generic Vanilla Biomes
-            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.spawnRegionShadowWolf
-                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.spawnRegionShadowWolf
+            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
             ) {
                 event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
             }
 
         } else if (event.biome instanceof ForestBiome || event.biome instanceof TaigaBiome) {
             // Wolf Vanilla Biomes
-            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.spawnRegionShadowWolf
-                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.spawnRegionShadowWolf
-                || SpawnRegionEnum.BIOME_SPECIFIC == Config.config.spawnRegionShadowWolf
+            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                || SpawnRegionEnum.BIOME_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
             ) {
                 event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
             }
 
         } else if (event.biome == Biome.HELL) {
             // Other Dimension Vanilla Biomes
-            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.spawnRegionShadowWolf
-                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.spawnRegionShadowWolf
-                || SpawnRegionEnum.DIMENSION_SPECIFIC == Config.config.spawnRegionShadowWolf
+            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                || SpawnRegionEnum.DIMENSION_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
             ) {
                 event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
             }
 
         } else if (event.biome == Biome.SKY) {
             // Other Dimension Vanilla Biomes
-            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.spawnRegionShadowWolf
-                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.spawnRegionShadowWolf
+            if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
             ) {
                 event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
             }
@@ -65,17 +65,17 @@ public class EntitySpawnListener {
 
             if (event.world.dimension instanceof OverworldDimension) {
                 // Modded Overworld Biomes
-                if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.spawnRegionShadowWolf
-                    || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.spawnRegionShadowWolf
+                if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                    || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
                 ) {
                     event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
                 }
 
             } else if (event.world.dimension instanceof NetherDimension) {
                 // Modded Nether Biomes
-                if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.spawnRegionShadowWolf
-                    || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.spawnRegionShadowWolf
-                    || SpawnRegionEnum.DIMENSION_SPECIFIC == Config.config.spawnRegionShadowWolf
+                if  (  SpawnRegionEnum.ALL_REGIONS == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                    || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+                    || SpawnRegionEnum.DIMENSION_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
                 ) {
                     event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
                 }
