@@ -1,6 +1,6 @@
 package com.github.telvarost.taketwobetamobs.mixin;
 
-import com.github.telvarost.taketwobetamobs.EntitySpawningInterface;
+import com.github.telvarost.taketwobetamobs.ChunkSpawnData;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,9 +19,7 @@ public abstract class SaplingBlockMixin extends BlockMixin {
                && NETHERRACK.id == world.getBlockId(x, y-1, z+1)
                && NETHERRACK.id == world.getBlockId(x, y-1, z-1)
             ) {
-                //EntitySpawningInterface entitySpawningInterface = (EntitySpawningInterface)world.getChunk(x >> 4, z >> 4);
-                //System.out.println("Can spawn? " + entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf());
-                //entitySpawningInterface.entitySpawning_setCanSpawnShadowWolf(true);
+                ChunkSpawnData.setCanSpawnShadowWolf(world, x, z, true);
             }
         }
     }
