@@ -6,3 +6,4 @@ accessible field net/minecraft/entity/passive/WolfEntity furWet Z
 accessible field net/minecraft/entity/passive/WolfEntity shakingWaterOff Z
 accessible field net/minecraft/entity/passive/WolfEntity shakeProgress F
 accessible field net/minecraft/entity/passive/WolfEntity lastShakeProgress F
+accessible field net/minecraft/entity/MobEntity target Lnet/minecraft/entity/Entity;

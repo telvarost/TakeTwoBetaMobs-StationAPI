@@ -38,8 +38,11 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Unique
     protected void commandShadowWolvesToAttack(LivingEntity entity, boolean sitting) {
-        if (entity instanceof PigEntity || entity instanceof PigZombieEntity || entity instanceof PlayerEntity) {
-
+        if  (  entity instanceof ShadowWolfEntity
+            || entity instanceof PlayerEntity
+            || entity instanceof PigZombieEntity
+            || entity instanceof PigEntity
+        ) {
             if (!(entity instanceof PlayerEntity) || this.isPvpEnabled()) {
                 for(Object var5 : this.world.collectEntitiesByClass(ShadowWolfEntity.class, Box.createCached(this.x, this.y, this.z, this.x + (double)1.0F, this.y + (double)1.0F, this.z + (double)1.0F).expand((double)16.0F, (double)4.0F, (double)16.0F))) {
                     ShadowWolfEntity var6 = (ShadowWolfEntity)var5;

@@ -20,6 +20,7 @@ public abstract class SaplingBlockMixin extends BlockMixin {
                && NETHERRACK.id == world.getBlockId(x, y-1, z-1)
             ) {
                 EntitySpawningInterface entitySpawningInterface = (EntitySpawningInterface)world.getChunk(x >> 4, z >> 4);
+                //System.out.println("Can spawn? " + entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf());
                 entitySpawningInterface.entitySpawning_setCanSpawnShadowWolf(true);
             }
         }

@@ -8,8 +8,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Monster;
 import net.minecraft.entity.ai.pathing.Path;
+import net.minecraft.entity.mob.PigZombieEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -47,6 +49,21 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 	}
 
 	@Override
+	@Environment(EnvType.CLIENT)
+	public String getTexture() {
+		if (this.isTamed()) {
+			return "/assets/taketwobetamobs/stationapi/textures/entity/shadowwolf.png";
+		} else {
+			return this.isAngry() ? "/assets/taketwobetamobs/stationapi/textures/entity/shadowwolf_angry.png" : super.getTexture();
+		}
+	}
+
+	@Override
+	protected String getDeathSound() {
+		return "taketwobetamobs:entity.shadowwolf.death";
+	}
+
+	@Override
 	public boolean canBreatheInWater() {
 		return true;
 	}
@@ -63,18 +80,51 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 	}
 
 	@Override
-	@Environment(EnvType.CLIENT)
-	public String getTexture() {
-		if (this.isTamed()) {
-			return "/assets/taketwobetamobs/stationapi/textures/entity/shadowwolf.png";
-		} else {
-			return this.isAngry() ? "/assets/taketwobetamobs/stationapi/textures/entity/shadowwolf_angry.png" : super.getTexture();
-		}
-	}
+	public boolean damage(Entity damageSource, int amount) {
+		if  (  damageSource instanceof ShadowWolfEntity
+			|| damageSource instanceof PlayerEntity
+			|| damageSource instanceof PigZombieEntity
+			|| damageSource instanceof PigEntity
+			|| 99 < amount
+		) {
+			this.setSitting(false);
+			if (damageSource != null && !(damageSource instanceof PlayerEntity)) {
+				amount = (amount + 1) / 2;
+			}
 
-	@Override
-	protected String getDeathSound() {
-		return "taketwobetamobs:entity.shadowwolf.death";
+			if (!super.damage(damageSource, amount)) {
+				return false;
+			} else {
+				if (!this.isTamed() && !this.isAngry()) {
+					if (damageSource instanceof PlayerEntity) {
+						this.setAngry(true);
+						this.target = damageSource;
+					}
+
+					if (damageSource instanceof  LivingEntity) {
+						for (Object var5 : this.world.collectEntitiesByClass(WolfEntity.class, Box.createCached(this.x, this.y, this.z, this.x + (double) 1.0F, this.y + (double) 1.0F, this.z + (double) 1.0F).expand((double) 16.0F, (double) 4.0F, (double) 16.0F))) {
+							WolfEntity var6 = (WolfEntity) var5;
+							if (!var6.isTamed() && var6.target == null) {
+								var6.target = damageSource;
+								if (damageSource instanceof PlayerEntity) {
+									var6.setAngry(true);
+								}
+							}
+						}
+					}
+				} else if (damageSource != this && damageSource != null) {
+					if (this.isTamed() && damageSource instanceof PlayerEntity && ((PlayerEntity) damageSource).name.equalsIgnoreCase(this.getOwnerName())) {
+						return true;
+					}
+
+					this.target = damageSource;
+				}
+
+				return true;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -91,7 +141,8 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.spawnRegionShadowWolf
 			      || entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf()
 		          )
-			   && super.canSpawn()
+			   && this.world.getEntityCollisions(this, this.boundingBox).isEmpty()
+			   && !this.world.isBoxSubmergedInFluid(this.boundingBox)
 		       );
 	}
 
@@ -99,7 +150,7 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 	protected Entity getTargetInRange() {
 		if (this.isAngry()) {
 			return this.world.getClosestPlayer(this, (double)16.0F);
-		} else if (this.world.dimension instanceof NetherDimension && (this.getOwnerName() == null || this.getOwnerName().isBlank())) {
+		} else if (this.world.dimension instanceof NetherDimension && !this.isTamed()) {
 			this.setAngry(true);
 			return this.world.getClosestPlayer(this, (double)16.0F);
 		} else {

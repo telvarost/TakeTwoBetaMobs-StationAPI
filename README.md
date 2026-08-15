@@ -7,12 +7,17 @@ A StationAPI mod for Minecraft Beta 1.7.3 that attempts to add a variant for eac
 
 ### Mobs
 
-* Dark Wolf
-  * Immune to fire damage
+* Shadow Wolf
+  * Immune to all damage except from other shadow wolves, players, zombie pigmen, and pigs
 
 ### Structures
 
+All structures require the keystone block to be placed last to activate.
+
 * Blood Spruce - Marks a chunk for spawning dark wolves
+  * A cross of 4 netherrack with dirt in the center and then place the spruce sapling on the dirt
+    * Other blocks that allow spruce sapling placement besides dirt may be used if available 
+  * The spruce sapling is the keystone block
 
 ### Other Features
 

@@ -7,7 +7,6 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.util.math.MathHelper;
-import org.lwjgl.opengl.GL11;
 
 @Environment(EnvType.CLIENT)
 public class ShadowWolfEntityModel extends EntityModel {
@@ -124,9 +123,6 @@ public class ShadowWolfEntityModel extends EntityModel {
         this.neck.roll = var5.getShakeAnimationProgress(tickDelta, -0.08F);
         this.torso.roll = var5.getShakeAnimationProgress(tickDelta, -0.16F);
         this.tail.roll = var5.getShakeAnimationProgress(tickDelta, -0.2F);
-        float var7 = var5.getBrightnessAtEyes(tickDelta) * var5.getFurBrightnessMultiplier(tickDelta);
-        GL11.glColor4f(var7, var7, var7, 0.75f);
-
     }
 
     public void setAngles(float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch, float scale) {
