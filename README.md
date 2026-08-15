@@ -15,7 +15,7 @@ A StationAPI mod for Minecraft Beta 1.7.3 that attempts to add a variant for eac
   * Tamed with charcoal instead of bones (regular coal will not work)
   * Untamed shadow wolves automatically become hostile when in the Nether
   * Spawn Regions
-    * Chunk Specific - Spawns in chunks with blood spruce structures (see below)
+    * ~~Chunk Specific - Spawns in chunks with blood spruce structures (see below)~~ Under Construction
     * Biome Specific - Spawns in Forest and Taiga biomes (same as normal wolves)
     * Dimension Specific - Spawns only in the Nether
     * All Regions - Spawns in all dimensions and biomes (similarly no regions means natural spawning is disabled)
