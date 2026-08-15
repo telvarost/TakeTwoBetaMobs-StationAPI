@@ -36,6 +36,9 @@
     ],
     "gcapi3": [
       "com.github.telvarost.taketwobetamobs.Config"
+    ],
+    "gcapi3:factory_provider": [
+      "com.github.telvarost.taketwobetamobs.enums.SpawnRegionEnumFactory"
     ]
   },
   "mixins": [

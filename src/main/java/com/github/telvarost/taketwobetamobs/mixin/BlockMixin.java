@@ -14,10 +14,6 @@ public abstract class BlockMixin {
 
     @Shadow
     @Final
-    public static Block PUMPKIN;
-
-    @Shadow
-    @Final
     public static Block NETHERRACK;
 
     @Inject(method = "onPlaced(Lnet/minecraft/world/World;III)V", at = @At("HEAD"))

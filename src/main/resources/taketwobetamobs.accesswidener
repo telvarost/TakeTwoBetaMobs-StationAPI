@@ -1,3 +1,8 @@
 accessWidener v2 named
 
-accessible field net/minecraft/entity/MobEntity path Lnet/minecraft/entity/ai/pathing/Path;
+accessible method net/minecraft/entity/passive/WolfEntity showFeedParticles (Z)V
+accessible field net/minecraft/entity/passive/WolfEntity begging Z
+accessible field net/minecraft/entity/passive/WolfEntity furWet Z
+accessible field net/minecraft/entity/passive/WolfEntity shakingWaterOff Z
+accessible field net/minecraft/entity/passive/WolfEntity shakeProgress F
+accessible field net/minecraft/entity/passive/WolfEntity lastShakeProgress F

@@ -14,19 +14,14 @@ public abstract class SaplingBlockMixin extends BlockMixin {
         int blockMeta = world.getBlockMeta(x, y, z);
 
         if (1 == blockMeta) {
-//            if (  NETHERRACK.id == world.getBlockId(x+3, y-1, z)
-//               && NETHERRACK.id == world.getBlockId(x-3, y-1, z)
-//               && NETHERRACK.id == world.getBlockId(x, y-1, z+3)
-//               && NETHERRACK.id == world.getBlockId(x, y-1, z-3)
-//               && NETHERRACK.id == world.getBlockId(x+2, y-1, z+2)
-//               && NETHERRACK.id == world.getBlockId(x-2, y-1, z-2)
-//               && NETHERRACK.id == world.getBlockId(x+2, y-1, z-2)
-//               && NETHERRACK.id == world.getBlockId(x-2, y-1, z+2)
-//            ) {
+            if (  NETHERRACK.id == world.getBlockId(x+1, y-1, z)
+               && NETHERRACK.id == world.getBlockId(x-1, y-1, z)
+               && NETHERRACK.id == world.getBlockId(x, y-1, z+1)
+               && NETHERRACK.id == world.getBlockId(x, y-1, z-1)
+            ) {
                 EntitySpawningInterface entitySpawningInterface = (EntitySpawningInterface)world.getChunk(x >> 4, z >> 4);
                 entitySpawningInterface.entitySpawning_setCanSpawnShadowWolf(true);
-            System.out.println(entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf());
-            //}
+            }
         }
     }
 }

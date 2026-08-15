@@ -1,5 +1,6 @@
 package com.github.telvarost.taketwobetamobs;
 
+import com.github.telvarost.taketwobetamobs.enums.SpawnRegionEnum;
 import net.glasslauncher.mods.gcapi3.api.*;
 
 public class Config {
@@ -24,11 +25,11 @@ public class Config {
 //        public Float chanceBreakingSoulSandSpawnsShadowWolf = 0.01F;
 
         @ConfigEntry(
-                name = "Shadow Wolf Spawn Conditions",
-                description = "What regions entity can spawn in",
+                name = "Shadow Wolf Spawn Region",
+                description = "Restart required for changes to take effect",
                 multiplayerSynced = true
         )
-        public Boolean spawnRegionShadowWolf = true;
+        public SpawnRegionEnum spawnRegionShadowWolf = SpawnRegionEnum.CHUNK_SPECIFIC;
     }
 
     public static class RecipeConfig {
