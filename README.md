@@ -8,16 +8,25 @@ A StationAPI mod for Minecraft Beta 1.7.3 that attempts to add a variant for eac
 ### Mobs
 
 * Shadow Wolf
-  * Immune to all damage except from other shadow wolves, players, zombie pigmen, and pigs
+  * Immune to all damage except from other shadow wolves, players, zombie pigmen, and/or pigs
+    * Also, can only be commanded to attack the above entities
+    * There is an exception for extremely high damage (100 damage or above) so special mods may still kill the wolves
+  * 2x HP compared to normal wolves
+  * Tamed with charcoal instead of bones (regular coal will not work)
+  * Untamed shadow wolves automatically become hostile when in the Nether
+  * Spawn Regions
+    * Chunk Specific - Spawns in chunks with blood spruce structures (see below)
+    * Biome Specific - Spawns in Forest and Taiga biomes (same as normal wolves)
+    * Dimension Specific - Spawns only in the Nether
+    * All Regions - Spawns in all dimensions and biomes (similarly no regions means natural spawning is disabled)
 
-### Structures
+### Structures for Chunk Specific spawn regions
 
 All structures require the keystone block to be placed last to activate.
 
-* Blood Spruce - Marks a chunk for spawning dark wolves
+* Blood Spruce - Spruce sapling keystone
   * A cross of 4 netherrack with dirt in the center and then place the spruce sapling on the dirt
-    * Other blocks that allow spruce sapling placement besides dirt may be used if available 
-  * The spruce sapling is the keystone block
+    * Other blocks that allow spruce sapling placement besides dirt may be used if available
 
 ### Other Features
 
