@@ -10,7 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Monster;
 import net.minecraft.entity.ai.pathing.Path;
-import net.minecraft.entity.mob.PigZombieEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.NetherDimension;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -49,6 +49,17 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 	@Override
 	public boolean canBreatheInWater() {
 		return true;
+	}
+
+	@Override
+	protected void onLanding(float fallDistance) {
+		// Disable fall damage
+	}
+
+	@Override
+	public boolean isInsideWall() {
+		// Disable suffocation
+		return false;
 	}
 
 	@Override
@@ -85,16 +96,23 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 	}
 
 	@Override
+	protected Entity getTargetInRange() {
+		if (this.isAngry()) {
+			return this.world.getClosestPlayer(this, (double)16.0F);
+		} else if (this.world.dimension instanceof NetherDimension && (this.getOwnerName() == null || this.getOwnerName().isBlank())) {
+			this.setAngry(true);
+			return this.world.getClosestPlayer(this, (double)16.0F);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
 	protected void tickLiving() {
 		super.tickLiving();
 		if (!this.movementBlocked && !this.hasPath() && this.isTamed() && this.vehicle == null) {
 			PlayerEntity var3 = this.world.getPlayer(this.getOwnerName());
-			if (var3 != null) {
-				float var2 = var3.getDistance(this);
-				if (var2 > 5.0F) {
-					this.damage(var3, (int)var2);
-				}
-			} else if (!this.isSubmergedInWater()) {
+			if (var3 == null && !this.isSubmergedInWater()) {
 				this.setSitting(true);
 			}
 		} else if (this.target == null && !this.hasPath() && !this.isTamed() && this.world.random.nextInt(100) == 0) {
@@ -104,10 +122,6 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 			if (!masterList.isEmpty()) {
 				this.setTarget((Entity)masterList.get(this.world.random.nextInt(masterList.size())));
 			}
-		}
-
-		if (this.isSubmergedInWater()) {
-			this.setSitting(false);
 		}
 
 		if (!this.world.isRemote) {
@@ -146,7 +160,7 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 	public boolean interact(PlayerEntity player) {
 		ItemStack stack = player.inventory.getSelectedItem();
 		if (!this.isTamed()) {
-			if (stack != null && stack.itemId == Item.COAL.id && stack.getDamage() == 1 && !this.isAngry()) {
+			if (stack != null && stack.itemId == Item.COAL.id && stack.getDamage() == 1) {
 				--stack.count;
 				if (stack.count <= 0) {
 					player.inventory.setStack(player.inventory.selectedSlot, (ItemStack)null);
@@ -154,6 +168,8 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 
 				if (!this.world.isRemote) {
 					if (this.random.nextInt(3) == 0) {
+						this.setAngry(false);
+						this.setTarget(null);
 						this.setTamed(true);
 						this.setPath((Path)null);
 						this.setSitting(true);

@@ -1,9 +1,13 @@
 package com.github.telvarost.taketwobetamobs.mixin;
 
 import com.github.telvarost.taketwobetamobs.entity.ShadowWolfEntity;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PigZombieEntity;
 import net.minecraft.entity.passive.PigEntity;
+import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -45,6 +49,22 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                     }
                 }
             }
+        }
+    }
+
+    @WrapOperation(
+            method = "commandWolvesToAttack",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/passive/WolfEntity;isTamed()Z",
+                    ordinal = 1
+            )
+    )
+    public boolean takeTwoBetaMobs_isTamed(WolfEntity instance, Operation<Boolean> original) {
+        if (instance instanceof ShadowWolfEntity) {
+            return false;
+        } else {
+            return original.call(instance);
         }
     }
 }
