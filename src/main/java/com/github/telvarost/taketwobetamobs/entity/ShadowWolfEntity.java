@@ -132,7 +132,7 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 		int xCoord = MathHelper.floor(this.x);
 		int yCoord = MathHelper.floor(this.boundingBox.minY);
 		int zCoord = MathHelper.floor(this.z);
-		EntitySpawningInterface entitySpawningInterface = (EntitySpawningInterface)this.world.getChunkFromPos(xCoord, zCoord);
+		//EntitySpawningInterface entitySpawningInterface = (EntitySpawningInterface)this.world.getChunkFromPos(xCoord, zCoord);
 		//System.out.println("Chunk: " + xCoord + "," + yCoord + " SWS:" + entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf());
 		int blockId = this.world.getBlockId(xCoord, yCoord - 1, zCoord);
 		return (  this.world.difficulty > 0

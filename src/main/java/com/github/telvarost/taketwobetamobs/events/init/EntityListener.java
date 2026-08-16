@@ -1,6 +1,7 @@
 package com.github.telvarost.taketwobetamobs.events.init;
 
 import com.github.telvarost.taketwobetamobs.TakeTwoBetaMobs;
+import com.github.telvarost.taketwobetamobs.entity.OreBoarEntity;
 import com.github.telvarost.taketwobetamobs.entity.ShadowWolfEntity;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.event.entity.EntityRegisterEvent;
@@ -10,10 +11,12 @@ public class EntityListener {
     @EventListener
     public void registerEntities(EntityRegisterEvent event) {
         event.register(TakeTwoBetaMobs.TAKE_TWO_BETA_MOBS.id("ShadowWolf"), ShadowWolfEntity.class);
+        event.register(TakeTwoBetaMobs.TAKE_TWO_BETA_MOBS.id("OreBoar"), OreBoarEntity.class);
     }
 
     @EventListener
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
         event.register(TakeTwoBetaMobs.TAKE_TWO_BETA_MOBS.id("ShadowWolf"), ShadowWolfEntity::new);
+        event.register(TakeTwoBetaMobs.TAKE_TWO_BETA_MOBS.id("OreBoar"), OreBoarEntity::new);
     }
 }

@@ -19,6 +19,7 @@ A StationAPI mod for Minecraft Beta 1.7.3 that attempts to add a variant for eac
     * Biome Specific - Spawns in Forest and Taiga biomes (same as normal wolves)
     * Dimension Specific - Spawns only in the Nether
     * All Regions - Spawns in all dimensions and biomes (similarly no regions means natural spawning is disabled)
+* Ore Boar
 
 ### Structures for Chunk Specific spawn regions
 
