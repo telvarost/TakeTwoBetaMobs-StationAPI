@@ -31,9 +31,6 @@
     ],
     "stationapi:event_bus_server": [
     ],
-    "bhcreative:event_bus": [
-      "com.github.telvarost.taketwobetamobs.events.init.CreativeListener"
-    ],
     "gcapi3": [
       "com.github.telvarost.taketwobetamobs.Config"
     ],
