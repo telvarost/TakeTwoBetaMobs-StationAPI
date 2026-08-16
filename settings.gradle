@@ -8,6 +8,11 @@ pluginManagement {
             name = 'Babric'
             url = 'https://maven.glass-launcher.net/babric'
         }
+        // Used for RetroConvert, which converts ornithe mods to babric
+        maven {
+            name = 'Periut'
+            url = 'https://matthewperiut.github.io/repository'
+        }
         mavenCentral()
         gradlePluginPortal()
     }

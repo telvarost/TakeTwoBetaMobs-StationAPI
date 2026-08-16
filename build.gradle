@@ -2,6 +2,7 @@ plugins {
 	id 'maven-publish'
 	id 'fabric-loom' version '1.17.19'
 	id 'babric-loom-extension' version '1.16.+'
+	id 'com.periut.retroconvert' version '1.0.4'
 	id "com.modrinth.minotaur" version "2.+"
 }
 
@@ -131,12 +132,6 @@ dependencies {
 		}
 	}
 
-	if (project.hasProperty("bhcreative_version")) {
-		modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-b1.7.3") {
-			transitive = false
-		}
-	}
-
 	if (project.hasProperty("accessoryapi_version")) {
 		modImplementation("maven.modrinth:accessory-api:${project.accessoryapi_version}") {
 			transitive = false
@@ -214,9 +209,10 @@ dependencies {
 	}
 
 	if (project.hasProperty("retroapi_version")) {
-		modImplementation("maven.modrinth:retroapi:${project.retroapi_version}") {
-			transitive false
-		}
+		// localize rather than a plain notation: RetroAPI nests the OSL mods and its
+		// StationAPI bridge, and Loom does not unpack those for a dev run, so without
+		// this the bridge is missing and OSL never loads.
+		modImplementation retroconvert.localize("maven.modrinth:retroapi:${project.retroapi_version}")
 	}
 
 	// Runtime Only
@@ -334,7 +330,6 @@ tasks.register("update") {
 		updateDependency(lines, "Glass Config API", "gcapi_version", "https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI")
 		updateDependency(lines, "Always More Items", "alwaysmoreitems_version", "https://maven.glass-launcher.net/releases/net/glasslauncher/mods/AlwaysMoreItems")
 		updateDependency(lines, "ModMenu", "modmenu_version", "https://maven.glass-launcher.net/releases/net/danygames2014/modmenu")
-		updateDependency(lines, "BH Creative", "bhcreative_version", "https://api.modrinth.com/maven/maven/modrinth/bh-creative")
 		updateDependency(lines, "Spawn Eggs", "spawneggs_version", "https://maven.glass-launcher.net/releases/net/danygames2014/spawneggs")
 		updateDependency(lines, "Retro Commands", "retrocommands_version", "https://api.modrinth.com/maven/maven/modrinth/retrocommands")
 		updateDependency(lines, "Accessory API", "accessoryapi_version", "https://api.modrinth.com/maven/maven/modrinth/accessory-api")
