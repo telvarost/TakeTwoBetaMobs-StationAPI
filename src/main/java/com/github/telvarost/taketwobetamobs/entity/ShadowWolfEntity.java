@@ -1,7 +1,7 @@
 package com.github.telvarost.taketwobetamobs.entity;
 
+import com.github.telvarost.taketwobetamobs.ChunkSpawnData;
 import com.github.telvarost.taketwobetamobs.Config;
-import com.github.telvarost.taketwobetamobs.EntitySpawningInterface;
 import com.github.telvarost.taketwobetamobs.TakeTwoBetaMobs;
 import com.github.telvarost.taketwobetamobs.enums.SpawnRegionEnum;
 import net.fabricmc.api.EnvType;
@@ -132,14 +132,12 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 		int xCoord = MathHelper.floor(this.x);
 		int yCoord = MathHelper.floor(this.boundingBox.minY);
 		int zCoord = MathHelper.floor(this.z);
-		//EntitySpawningInterface entitySpawningInterface = (EntitySpawningInterface)this.world.getChunkFromPos(xCoord, zCoord);
-		//System.out.println("Chunk: " + xCoord + "," + yCoord + " SWS:" + entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf());
 		int blockId = this.world.getBlockId(xCoord, yCoord - 1, zCoord);
 		return (  this.world.difficulty > 0
 			   && (blockId == Block.GRASS_BLOCK.id || blockId == Block.NETHERRACK.id)
 			   && this.world.getBrightness(xCoord, yCoord, zCoord) <= 8
 			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
-			      //|| entitySpawningInterface.entitySpawning_getCanSpawnShadowWolf()
+			      || ChunkSpawnData.getCanSpawnShadowWolf(this.world, xCoord, zCoord)
 		          )
 			   && this.world.getEntityCollisions(this, this.boundingBox).isEmpty()
 			   && !this.world.isBoxSubmergedInFluid(this.boundingBox)

@@ -54,6 +54,7 @@
 
   "recommends": {
     "gcapi3": ">=3.0.1",
-    "modmenu": "*"
+    "modmenu": "*",
+    "retroapi": "*"
   }
 }

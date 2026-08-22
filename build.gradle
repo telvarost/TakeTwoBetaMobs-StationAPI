@@ -1,7 +1,8 @@
 plugins {
 	id 'maven-publish'
-	id 'fabric-loom' version '1.16.2'
-	id 'babric-loom-extension' version '1.15.3'
+	id 'fabric-loom' version '1.17.19'
+	id 'babric-loom-extension' version '1.16.+'
+	id 'com.periut.retroconvert' version '1.0.4'
 	id "com.modrinth.minotaur" version "2.+"
 }
 
@@ -14,7 +15,7 @@ base {
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 	withSourcesJar()
 }
@@ -132,7 +133,7 @@ dependencies {
 	}
 
 	if (project.hasProperty("bhcreative_version")) {
-		modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-b1.7.3") {
+		modCompileOnly("maven.modrinth:bh-creative:${project.bhcreative_version}-b1.7.3") {
 			transitive = false
 		}
 	}
@@ -213,6 +214,13 @@ dependencies {
 		}
 	}
 
+	if (project.hasProperty("retroapi_version")) {
+		// localize rather than a plain notation: RetroAPI nests the OSL mods and its
+		// StationAPI bridge, and Loom does not unpack those for a dev run, so without
+		// this the bridge is missing and OSL never loads.
+		modImplementation retroconvert.localize("maven.modrinth:retroapi:${project.retroapi_version}")
+	}
+
 	// Runtime Only
 	modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-b1.7.3") {
 		transitive = false
@@ -228,7 +236,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = 21
 }
 
 // Disables the generation of the .module file
