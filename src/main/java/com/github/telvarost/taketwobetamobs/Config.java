@@ -49,5 +49,12 @@ public class Config {
                 multiplayerSynced = true
         )
         public SpawnRegionEnum spawnRegionShadowWolf = SpawnRegionEnum.BIOME_SPECIFIC;
+
+        @ConfigEntry(
+                name = "Ore Boar Spawn Region",
+                description = "Chunk specific option requires RetroAPI",
+                multiplayerSynced = true
+        )
+        public SpawnRegionEnum spawnRegionOreBoar = SpawnRegionEnum.BIOME_SPECIFIC;
     }
 }
