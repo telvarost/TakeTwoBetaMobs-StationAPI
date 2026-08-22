@@ -133,9 +133,10 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 		int yCoord = MathHelper.floor(this.boundingBox.minY);
 		int zCoord = MathHelper.floor(this.z);
 		int blockId = this.world.getBlockId(xCoord, yCoord - 1, zCoord);
+		System.out.println("Can spawn? " + xCoord + "," + yCoord);
 		return (  this.world.difficulty > 0
-			   && (blockId == Block.GRASS_BLOCK.id || blockId == Block.NETHERRACK.id)
-			   && this.world.getBrightness(xCoord, yCoord, zCoord) <= 8
+			   && (blockId == Block.GRASS_BLOCK.id || blockId == Block.NETHERRACK.id || blockId == Block.GRAVEL.id || blockId == Block.SAND.id || blockId == Block.SOUL_SAND.id)
+			   && this.world.getLightLevel(xCoord, yCoord, zCoord) <= 8
 			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
 			      || ChunkSpawnData.getCanSpawnShadowWolf(this.world, xCoord, zCoord)
 		          )

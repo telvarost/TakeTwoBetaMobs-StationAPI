@@ -19,6 +19,8 @@ public abstract class SaplingBlockMixin extends BlockMixin {
                && NETHERRACK.id == world.getBlockId(x, y-1, z+1)
                && NETHERRACK.id == world.getBlockId(x, y-1, z-1)
             ) {
+                boolean fSpawnable = ChunkSpawnData.getCanSpawnShadowWolf(world, x, z);
+                System.out.println("Was spawnable? " + fSpawnable);
                 ChunkSpawnData.setCanSpawnShadowWolf(world, x, z, true);
             }
         }

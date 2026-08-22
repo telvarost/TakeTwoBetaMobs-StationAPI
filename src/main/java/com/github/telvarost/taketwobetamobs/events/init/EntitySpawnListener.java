@@ -47,7 +47,7 @@ public class EntitySpawnListener {
                 || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
                 || SpawnRegionEnum.DIMENSION_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
             ) {
-                event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
+                event.biome.addHostileEntity(ShadowWolfEntity.class, 2);
             }
 
         } else if (event.biome == Biome.SKY) {
@@ -77,7 +77,7 @@ public class EntitySpawnListener {
                     || SpawnRegionEnum.CHUNK_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
                     || SpawnRegionEnum.DIMENSION_SPECIFIC == Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
                 ) {
-                    event.biome.addPassiveEntity(ShadowWolfEntity.class, 2);
+                    event.biome.addHostileEntity(ShadowWolfEntity.class, 2);
                 }
 
             } else {
