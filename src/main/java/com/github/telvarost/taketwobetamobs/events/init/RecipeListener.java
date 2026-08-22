@@ -8,7 +8,7 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-import static com.github.telvarost.taketwobetamobs.events.init.ItemListener.LOCATOR;
+import static com.github.telvarost.taketwobetamobs.events.init.ItemListener.TRACKER;
 
 public class RecipeListener {
 
@@ -18,7 +18,7 @@ public class RecipeListener {
 
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
              if (Config.config.RECIPE_CONFIG.enableLocatorCraftingRecipe) {
-                 CraftingRegistry.addShapelessRecipe(new ItemStack(LOCATOR, 1), Item.CLOCK, Item.COMPASS);
+                 CraftingRegistry.addShapelessRecipe(new ItemStack(TRACKER, 1), Item.CLOCK, Item.COMPASS);
              }
         }
     }

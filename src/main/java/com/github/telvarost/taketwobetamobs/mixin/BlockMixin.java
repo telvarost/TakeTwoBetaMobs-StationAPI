@@ -16,6 +16,10 @@ public abstract class BlockMixin {
     @Final
     public static Block NETHERRACK;
 
+    @Shadow
+    @Final
+    public static Block COAL_ORE;
+
     @Inject(method = "onPlaced(Lnet/minecraft/world/World;III)V", at = @At("HEAD"))
     public void takeTwoBetaMobs_onPlaced(World world, int x, int y, int z, CallbackInfo ci) {
         /* Open mixin inheritance */

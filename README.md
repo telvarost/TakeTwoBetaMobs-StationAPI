@@ -4,6 +4,7 @@ A StationAPI mod for Minecraft Beta 1.7.3 that attempts to add a variant for eac
 - Mod works on Multiplayer with [GlassConfigAPI](https://modrinth.com/mod/glass-config-api) version 3.0+ used to sync configs!
   - Requires [ZastavkaAPI](https://modrinth.com/mod/zastavkaapi) to work on servers, until StationAPI fixes its falling blocks.
 - All features can be enabled/disabled through [GlassConfigAPI](https://modrinth.com/mod/glass-config-api) as well.
+- [RetroAPI](https://modrinth.com/mod/retroapi) is used for chunk specific data storage to allow for unique spawning rules when desired.
 
 ### Mobs
 
@@ -15,15 +16,16 @@ A StationAPI mod for Minecraft Beta 1.7.3 that attempts to add a variant for eac
   * Tamed with charcoal instead of bones (regular coal will not work)
   * Untamed shadow wolves automatically become hostile when in the Nether
   * Spawn Regions
-    * ~~Chunk Specific - Spawns in chunks with blood spruce structures (see below)~~ Under Construction
+    * Chunk Specific - Spawns in chunks with blood spruce structures (requires RetroAPI)
     * Biome Specific - Spawns in Forest and Taiga biomes (same as normal wolves)
     * Dimension Specific - Spawns only in the Nether
     * All Regions - Spawns in all dimensions and biomes (similarly no regions means natural spawning is disabled)
-* Ore Boar
 
-### Structures for Chunk Specific spawn regions
+### Structures for Chunk Specific spawn regions (requires RetroAPI)
 
 All structures require the keystone block to be placed last to activate.
+  * The keystone will emit cyan particles and a cross of square particles if it is the first structure of that kind built within that chunk
+  * The keystone will emit green particles and a single square particle if the structure has already been built in that chunk
 
 * Blood Spruce - Spruce sapling keystone
   * A cross of 4 netherrack with dirt in the center and then place the spruce sapling on the dirt
@@ -31,7 +33,9 @@ All structures require the keystone block to be placed last to activate.
 
 ### Other Features
 
-* Locator
+* Tracker
+  * Use on a block to tell you which chunk the block is in and what special spawn rules that chunk has
+  * Crafted by combining a compass with a clock in the crafting grid
 
 ### Crafting Recipes
 

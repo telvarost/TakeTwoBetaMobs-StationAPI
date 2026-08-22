@@ -1,6 +1,6 @@
 package com.github.telvarost.taketwobetamobs.entity;
 
-import com.github.telvarost.taketwobetamobs.ChunkSpawnData;
+import com.github.telvarost.taketwobetamobs.retroapi.ChunkSpawnData;
 import com.github.telvarost.taketwobetamobs.Config;
 import com.github.telvarost.taketwobetamobs.TakeTwoBetaMobs;
 import com.github.telvarost.taketwobetamobs.enums.SpawnRegionEnum;
@@ -133,7 +133,7 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 		int yCoord = MathHelper.floor(this.boundingBox.minY);
 		int zCoord = MathHelper.floor(this.z);
 		int blockId = this.world.getBlockId(xCoord, yCoord - 1, zCoord);
-		System.out.println("Can spawn? " + xCoord + "," + yCoord);
+		//System.out.println("Can spawn? " + xCoord + "," + yCoord);
 		return (  this.world.difficulty > 0
 			   && (blockId == Block.GRASS_BLOCK.id || blockId == Block.NETHERRACK.id || blockId == Block.GRAVEL.id || blockId == Block.SAND.id || blockId == Block.SOUL_SAND.id)
 			   && this.world.getLightLevel(xCoord, yCoord, zCoord) <= 8

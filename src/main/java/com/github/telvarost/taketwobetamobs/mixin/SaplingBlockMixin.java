@@ -1,6 +1,7 @@
 package com.github.telvarost.taketwobetamobs.mixin;
 
-import com.github.telvarost.taketwobetamobs.ChunkSpawnData;
+import com.github.telvarost.taketwobetamobs.ParticleHelper;
+import com.github.telvarost.taketwobetamobs.retroapi.ChunkSpawnData;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,9 +20,13 @@ public abstract class SaplingBlockMixin extends BlockMixin {
                && NETHERRACK.id == world.getBlockId(x, y-1, z+1)
                && NETHERRACK.id == world.getBlockId(x, y-1, z-1)
             ) {
-                boolean fSpawnable = ChunkSpawnData.getCanSpawnShadowWolf(world, x, z);
-                System.out.println("Was spawnable? " + fSpawnable);
-                ChunkSpawnData.setCanSpawnShadowWolf(world, x, z, true);
+                boolean canSpawnShadowWolf = ChunkSpawnData.getCanSpawnShadowWolf(world, x, z);
+                if (canSpawnShadowWolf) {
+                    ParticleHelper.spawnStructureCompleteParticles(false, world, x, y, z);
+                } else {
+                    ParticleHelper.spawnStructureCompleteParticles(true, world, x, y, z);
+                    ChunkSpawnData.setCanSpawnShadowWolf(world, x, z, true);
+                }
             }
         }
     }

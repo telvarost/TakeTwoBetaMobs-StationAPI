@@ -1,4 +1,4 @@
-package com.github.telvarost.taketwobetamobs;
+package com.github.telvarost.taketwobetamobs.retroapi;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.world.World;

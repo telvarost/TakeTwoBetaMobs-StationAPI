@@ -8,14 +8,14 @@ import paulevs.bhcreative.api.CreativeTab;
 import paulevs.bhcreative.api.SimpleTab;
 import paulevs.bhcreative.registry.TabRegistryEvent;
 
-import static com.github.telvarost.taketwobetamobs.events.init.ItemListener.LOCATOR;
+import static com.github.telvarost.taketwobetamobs.events.init.ItemListener.TRACKER;
 
 public class CreativeListener {
     public static CreativeTab tabTakeTwoBetaMobs;
 
     @EventListener
     public void onTabInit(TabRegistryEvent event){
-        tabTakeTwoBetaMobs = new SimpleTab(TakeTwoBetaMobs.TAKE_TWO_BETA_MOBS.id("locator"), LOCATOR);
+        tabTakeTwoBetaMobs = new SimpleTab(TakeTwoBetaMobs.TAKE_TWO_BETA_MOBS.id("tracker"), TRACKER);
         event.register(tabTakeTwoBetaMobs);
 
         for (Item item : ItemListener.items){
