@@ -1,0 +1,24 @@
+- [RetroAPI](https://modrinth.com/mod/retroapi) is used for chunk specific data storage to allow for unique spawning rules when desired.
+  * Chunk Specific - Spawns in chunks with blood spruce structures (requires RetroAPI)
+
+### Structures for Chunk Specific spawn regions (requires RetroAPI)
+
+All structures require the keystone block to be placed last to activate.
+  * The keystone will emit cyan particles and a cross of square particles if it is the first structure of that kind built within that chunk
+  * The keystone will emit green particles and a single square particle if the structure has already been built in that chunk
+
+* Blood Spruce - Spruce sapling keystone
+  * A cross of 4 netherrack with dirt in the center and then place the spruce sapling on the dirt
+    * Other blocks that allow spruce sapling placement besides dirt may be used if available
+
+### Other Features
+
+* Tracker
+  * Use on a block to tell you which chunk the block is in and what special spawn rules that chunk has
+  * Crafted by combining a compass with a clock in the crafting grid
+
+### Crafting Recipes
+
+All crafting recipes can be turned on/off from the mod config menu.
+
+![locator crafting recipe](https://github.com/telvarost/TakeTwoBetaMobs-StationAPI/blob/main/images/LocatorCraftingRecipe.png)

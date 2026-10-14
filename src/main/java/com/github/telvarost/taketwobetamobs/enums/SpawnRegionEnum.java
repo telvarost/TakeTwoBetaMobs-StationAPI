@@ -2,7 +2,7 @@ package com.github.telvarost.taketwobetamobs.enums;
 
 public enum SpawnRegionEnum {
     NONE("None"),
-    CHUNK_SPECIFIC("Chunk Specific"),
+    //CHUNK_SPECIFIC("Chunk Specific"),
     BIOME_SPECIFIC("Biome Specific"),
     DIMENSION_SPECIFIC("Dimension Specific"),
     ALL_REGIONS("All Regions");

@@ -2,7 +2,7 @@ plugins {
 	id 'maven-publish'
 	id 'fabric-loom' version '1.17.19'
 	id 'babric-loom-extension' version '1.16.+'
-	id 'com.periut.retroconvert' version '1.0.4'
+	//id 'com.periut.retroconvert' version '1.0.4'
 	id "com.modrinth.minotaur" version "2.+"
 }
 
@@ -214,12 +214,12 @@ dependencies {
 		}
 	}
 
-	if (project.hasProperty("retroapi_version")) {
-		// localize rather than a plain notation: RetroAPI nests the OSL mods and its
-		// StationAPI bridge, and Loom does not unpack those for a dev run, so without
-		// this the bridge is missing and OSL never loads.
-		modImplementation retroconvert.localize("maven.modrinth:retroapi:${project.retroapi_version}")
-	}
+//	if (project.hasProperty("retroapi_version")) {
+//		// localize rather than a plain notation: RetroAPI nests the OSL mods and its
+//		// StationAPI bridge, and Loom does not unpack those for a dev run, so without
+//		// this the bridge is missing and OSL never loads.
+//		modImplementation retroconvert.localize("maven.modrinth:retroapi:${project.retroapi_version}")
+//	}
 
 	// Runtime Only
 	modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-b1.7.3") {

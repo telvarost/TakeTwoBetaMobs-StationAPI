@@ -22,9 +22,7 @@
     "stationapi:event_bus": [
       "com.github.telvarost.taketwobetamobs.TakeTwoBetaMobs",
       "com.github.telvarost.taketwobetamobs.events.init.EntityListener",
-      "com.github.telvarost.taketwobetamobs.events.init.EntitySpawnListener",
-      "com.github.telvarost.taketwobetamobs.events.init.ItemListener",
-      "com.github.telvarost.taketwobetamobs.events.init.RecipeListener"
+      "com.github.telvarost.taketwobetamobs.events.init.EntitySpawnListener"
     ],
     "stationapi:event_bus_client": [
       "com.github.telvarost.taketwobetamobs.events.client.EntityRendererListener"
@@ -32,7 +30,6 @@
     "stationapi:event_bus_server": [
     ],
     "bhcreative:event_bus": [
-      "com.github.telvarost.taketwobetamobs.events.init.CreativeListener"
     ],
     "gcapi3": [
       "com.github.telvarost.taketwobetamobs.Config"

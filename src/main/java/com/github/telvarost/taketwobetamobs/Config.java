@@ -10,11 +10,11 @@ public class Config {
 
     public static class ConfigFields {
 
-        @ConfigCategory(
-                name = "Recipe Config",
-                description = "Restart required for changes to take effect"
-        )
-        public RecipeConfig RECIPE_CONFIG = new RecipeConfig();
+//        @ConfigCategory(
+//                name = "Recipe Config",
+//                description = "Restart required for changes to take effect"
+//        )
+//        public RecipeConfig RECIPE_CONFIG = new RecipeConfig();
 
         @ConfigCategory(
                 name = "Spawn Rules Config",
@@ -31,30 +31,30 @@ public class Config {
 //        public Float chanceBreakingSoulSandSpawnsShadowWolf = 0.01F;
     }
 
-    public static class RecipeConfig {
-
-        @ConfigEntry(
-                name = "Enable Locator Crafting Recipe",
-                description = "Combine clock and compass to craft",
-                multiplayerSynced = true
-        )
-        public Boolean enableLocatorCraftingRecipe = true;
-    }
+//    public static class RecipeConfig {
+//
+//        @ConfigEntry(
+//                name = "Enable Locator Crafting Recipe",
+//                description = "Combine clock and compass to craft",
+//                multiplayerSynced = true
+//        )
+//        public Boolean enableLocatorCraftingRecipe = true;
+//    }
 
     public static class SpawnRulesConfig {
 
         @ConfigEntry(
                 name = "Shadow Wolf Spawn Region",
-                description = "Chunk specific option requires RetroAPI",
+                //description = "Chunk specific option requires RetroAPI",
                 multiplayerSynced = true
         )
         public SpawnRegionEnum spawnRegionShadowWolf = SpawnRegionEnum.BIOME_SPECIFIC;
 
-        @ConfigEntry(
-                name = "Ore Boar Spawn Region",
-                description = "Chunk specific option requires RetroAPI",
-                multiplayerSynced = true
-        )
-        public SpawnRegionEnum spawnRegionOreBoar = SpawnRegionEnum.BIOME_SPECIFIC;
+//        @ConfigEntry(
+//                name = "Ore Boar Spawn Region",
+//                description = "Chunk specific option requires RetroAPI",
+//                multiplayerSynced = true
+//        )
+//        public SpawnRegionEnum spawnRegionOreBoar = SpawnRegionEnum.BIOME_SPECIFIC;
     }
 }

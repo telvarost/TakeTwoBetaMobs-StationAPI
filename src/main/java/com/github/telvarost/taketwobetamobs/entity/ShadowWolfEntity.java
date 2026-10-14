@@ -1,6 +1,5 @@
 package com.github.telvarost.taketwobetamobs.entity;
 
-import com.github.telvarost.taketwobetamobs.retroapi.ChunkSpawnData;
 import com.github.telvarost.taketwobetamobs.Config;
 import com.github.telvarost.taketwobetamobs.TakeTwoBetaMobs;
 import com.github.telvarost.taketwobetamobs.enums.SpawnRegionEnum;
@@ -137,9 +136,9 @@ public class ShadowWolfEntity extends WolfEntity implements Monster, MobSpawnDat
 		return (  this.world.difficulty > 0
 			   && (blockId == Block.GRASS_BLOCK.id || blockId == Block.NETHERRACK.id || blockId == Block.GRAVEL.id || blockId == Block.SAND.id || blockId == Block.SOUL_SAND.id)
 			   && this.world.getLightLevel(xCoord, yCoord, zCoord) <= 8
-			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
-			      || ChunkSpawnData.getCanSpawnShadowWolf(this.world, xCoord, zCoord)
-		          )
+//			   && (  SpawnRegionEnum.CHUNK_SPECIFIC != Config.config.SPAWN_RULES_CONFIG.spawnRegionShadowWolf
+//			      || ChunkSpawnData.getCanSpawnShadowWolf(this.world, xCoord, zCoord)
+//		          )
 			   && this.world.getEntityCollisions(this, this.boundingBox).isEmpty()
 			   && !this.world.isBoxSubmergedInFluid(this.boundingBox)
 		       );

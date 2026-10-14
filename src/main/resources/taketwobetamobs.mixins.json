@@ -4,9 +4,7 @@
   "package": "com.github.telvarost.taketwobetamobs.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BlockMixin",
-    "PlayerEntityMixin",
-    "SaplingBlockMixin"
+    "PlayerEntityMixin"
   ],
   "server": [
   ],
